@@ -1,442 +1,476 @@
+@256 // 0
+D=A // 1
+@SP // 2
+M=D // 3
+@Sys.initRES0 // 4
+D=A // 5
+@SP // 6
+A=M // 7
+M=D // 8
+@SP // 9
+M=M+1 // 10
+@LCL // 11
+D=M // 12
+@SP // 13
+A=M // 14
+M=D // 15
+@SP // 16
+M=M+1 // 17
+@ARG // 18
+D=M // 19
+@SP // 20
+A=M // 21
+M=D // 22
+@SP // 23
+M=M+1 // 24
+@THIS // 25
+D=M // 26
+@SP // 27
+A=M // 28
+M=D // 29
+@SP // 30
+M=M+1 // 31
+@THAT // 32
+D=M // 33
+@SP // 34
+A=M // 35
+M=D // 36
+@SP // 37
+M=M+1 // 38
+@SP // 39
+D=M // 40
+@LCL // 41
+M=D // 42
+@SP // 43
+D=M // 44
+@5 // 45
+D=D-A // 46
+@ARG // 47
+M=D // 48
+@Sys.init // 49
+0;JMP // 50
+(Sys.initRES0)
+//////
+// Main
 // function Main.fibonacci 0
 (Main.fibonacci)
-D=0
-@SP
-A=M
-M=D
-@SP
-M=M+1
 // push argument 0
-@ARG
-D=M
-@0
-A=D+A
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
+@ARG // 51
+D=M // 52
+@0 // 53
+A=D+A // 54
+D=M // 55
+@SP // 56
+A=M // 57
+M=D // 58
+@SP // 59
+M=M+1 // 60
 // push constant 2
-@2
-D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
+@2 // 61
+D=A // 62
+@SP // 63
+A=M // 64
+M=D // 65
+@SP // 66
+M=M+1 // 67
 // lt
-@SP
-M=M-1
-A=M
-D=M
-@SP
-M=M-1
-A=M
-D=M-D
-@BOOL0
-D;JLT
-@SP
-A=M
-M=0
-@ENDBOOL0
-0;JMP
+@SP // 68
+M=M-1 // 69
+A=M // 70
+D=M // 71
+@SP // 72
+M=M-1 // 73
+A=M // 74
+D=M-D // 75
+@BOOL0 // 76
+D;JLT // 77
+@SP // 78
+A=M // 79
+M=0 // 80
+@ENDBOOL0 // 81
+0;JMP // 82
 (BOOL0)
-@SP
-A=M
-M=-1
+@SP // 83
+A=M // 84
+M=-1 // 85
 (ENDBOOL0)
-@SP
-M=M+1
+@SP // 86
+M=M+1 // 87
 // if-goto IF_TRUE
-@SP
-M=M-1
-A=M
-D=M
-@IF_TRUE
-D; JGT
+@SP // 88
+M=M-1 // 89
+A=M // 90
+D=M // 91
+@Main$IF_TRUE // 92
+D; JNE // 93
 // goto IF_FALSE
-@IF_FALSE
-D; JMP
+@Main$IF_FALSE // 94
+D;JMP // 95
 // label IF_TRUE
-(IF_TRUE)
+(Main$IF_TRUE)
 // push argument 0
-@ARG
-D=M
-@0
-A=D+A
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
+@ARG // 96
+D=M // 97
+@0 // 98
+A=D+A // 99
+D=M // 100
+@SP // 101
+A=M // 102
+M=D // 103
+@SP // 104
+M=M+1 // 105
 // return
-@LCL
-D=M
-@R13
-M=D
-@LCL
-D=M
-@5
-D=D-A
-A=D
-D=M
-@R14
-M=D
-@SP
-M=M-1
-A=M
-D=M
-@ARG
-A=M
-M=D
-@ARG
-D=M
-@SP
-M=D+1
-@R13
-D=M
-@5
-D=D-A
-@1
-D=D+A
-A=D
-D=M
-@LCL
-M=D
-@R13
-D=M
-@5
-D=D-A
-@2
-D=D+A
-A=D
-D=M
-@ARG
-M=D
-@R13
-D=M
-@5
-D=D-A
-@3
-D=D+A
-A=D
-D=M
-@THIS
-M=D
-@R13
-D=M
-@5
-D=D-A
-@4
-D=D+A
-A=D
-D=M
-@THAT
-M=D
-@R14
-A=M
-0; JMP
+@LCL // 106
+D=M // 107
+@R13 // 108
+M=D // 109
+@R13 // 110
+D=M // 111
+@5 // 112
+D=D-A // 113
+A=D // 114
+D=M // 115
+@R14 // 116
+M=D // 117
+@SP // 118
+M=M-1 // 119
+A=M // 120
+D=M // 121
+@ARG // 122
+A=M // 123
+M=D // 124
+@ARG // 125
+D=M // 126
+@SP // 127
+M=D+1 // 128
+@R13 // 129
+D=M // 130
+@1 // 131
+D=D-A // 132
+A=D // 133
+D=M // 134
+@THAT // 135
+M=D // 136
+@R13 // 137
+D=M // 138
+@2 // 139
+D=D-A // 140
+A=D // 141
+D=M // 142
+@THIS // 143
+M=D // 144
+@R13 // 145
+D=M // 146
+@3 // 147
+D=D-A // 148
+A=D // 149
+D=M // 150
+@ARG // 151
+M=D // 152
+@R13 // 153
+D=M // 154
+@4 // 155
+D=D-A // 156
+A=D // 157
+D=M // 158
+@LCL // 159
+M=D // 160
+@R14 // 161
+A=M // 162
+0;JMP // 163
 // label IF_FALSE
-(IF_FALSE)
+(Main$IF_FALSE)
 // push argument 0
-@ARG
-D=M
-@0
-A=D+A
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
+@ARG // 164
+D=M // 165
+@0 // 166
+A=D+A // 167
+D=M // 168
+@SP // 169
+A=M // 170
+M=D // 171
+@SP // 172
+M=M+1 // 173
 // push constant 2
-@2
-D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
+@2 // 174
+D=A // 175
+@SP // 176
+A=M // 177
+M=D // 178
+@SP // 179
+M=M+1 // 180
 // sub
-@SP
-M=M-1
-A=M
-D=M
-@SP
-M=M-1
-A=M
-M=M-D
-@SP
-M=M+1
+@SP // 181
+M=M-1 // 182
+A=M // 183
+D=M // 184
+@SP // 185
+M=M-1 // 186
+A=M // 187
+M=M-D // 188
+@SP // 189
+M=M+1 // 190
 // call Main.fibonacci 1
-@Main.fibonacciRES0
-D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@LCL
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@ARG
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@THIS
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@THAT
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@SP
-D=M
-@LCL
-M=D
-@6
-D=D-A
-@ARG
-M=D
-@Main.fibonacci
-0; JMP
-(Main.fibonacciRES0)
-// push argument 0
-@ARG
-D=M
-@0
-A=D+A
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// push constant 1
-@1
-D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
-// sub
-@SP
-M=M-1
-A=M
-D=M
-@SP
-M=M-1
-A=M
-M=M-D
-@SP
-M=M+1
-// call Main.fibonacci 1
-@Main.fibonacciRES1
-D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@LCL
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@ARG
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@THIS
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@THAT
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@SP
-D=M
-@LCL
-M=D
-@6
-D=D-A
-@ARG
-M=D
-@Main.fibonacci
-0; JMP
+@Main.fibonacciRES1 // 191
+D=A // 192
+@SP // 193
+A=M // 194
+M=D // 195
+@SP // 196
+M=M+1 // 197
+@LCL // 198
+D=M // 199
+@SP // 200
+A=M // 201
+M=D // 202
+@SP // 203
+M=M+1 // 204
+@ARG // 205
+D=M // 206
+@SP // 207
+A=M // 208
+M=D // 209
+@SP // 210
+M=M+1 // 211
+@THIS // 212
+D=M // 213
+@SP // 214
+A=M // 215
+M=D // 216
+@SP // 217
+M=M+1 // 218
+@THAT // 219
+D=M // 220
+@SP // 221
+A=M // 222
+M=D // 223
+@SP // 224
+M=M+1 // 225
+@SP // 226
+D=M // 227
+@LCL // 228
+M=D // 229
+@SP // 230
+D=M // 231
+@6 // 232
+D=D-A // 233
+@ARG // 234
+M=D // 235
+@Main.fibonacci // 236
+0;JMP // 237
 (Main.fibonacciRES1)
+// push argument 0
+@ARG // 238
+D=M // 239
+@0 // 240
+A=D+A // 241
+D=M // 242
+@SP // 243
+A=M // 244
+M=D // 245
+@SP // 246
+M=M+1 // 247
+// push constant 1
+@1 // 248
+D=A // 249
+@SP // 250
+A=M // 251
+M=D // 252
+@SP // 253
+M=M+1 // 254
+// sub
+@SP // 255
+M=M-1 // 256
+A=M // 257
+D=M // 258
+@SP // 259
+M=M-1 // 260
+A=M // 261
+M=M-D // 262
+@SP // 263
+M=M+1 // 264
+// call Main.fibonacci 1
+@Main.fibonacciRES2 // 265
+D=A // 266
+@SP // 267
+A=M // 268
+M=D // 269
+@SP // 270
+M=M+1 // 271
+@LCL // 272
+D=M // 273
+@SP // 274
+A=M // 275
+M=D // 276
+@SP // 277
+M=M+1 // 278
+@ARG // 279
+D=M // 280
+@SP // 281
+A=M // 282
+M=D // 283
+@SP // 284
+M=M+1 // 285
+@THIS // 286
+D=M // 287
+@SP // 288
+A=M // 289
+M=D // 290
+@SP // 291
+M=M+1 // 292
+@THAT // 293
+D=M // 294
+@SP // 295
+A=M // 296
+M=D // 297
+@SP // 298
+M=M+1 // 299
+@SP // 300
+D=M // 301
+@LCL // 302
+M=D // 303
+@SP // 304
+D=M // 305
+@6 // 306
+D=D-A // 307
+@ARG // 308
+M=D // 309
+@Main.fibonacci // 310
+0;JMP // 311
+(Main.fibonacciRES2)
 // add
-@SP
-M=M-1
-A=M
-D=M
-@SP
-M=M-1
-A=M
-M=M+D
-@SP
-M=M+1
+@SP // 312
+M=M-1 // 313
+A=M // 314
+D=M // 315
+@SP // 316
+M=M-1 // 317
+A=M // 318
+M=M+D // 319
+@SP // 320
+M=M+1 // 321
 // return
-@LCL
-D=M
-@R13
-M=D
-@LCL
-D=M
-@5
-D=D-A
-A=D
-D=M
-@R14
-M=D
-@SP
-M=M-1
-A=M
-D=M
-@ARG
-A=M
-M=D
-@ARG
-D=M
-@SP
-M=D+1
-@R13
-D=M
-@5
-D=D-A
-@1
-D=D+A
-A=D
-D=M
-@LCL
-M=D
-@R13
-D=M
-@5
-D=D-A
-@2
-D=D+A
-A=D
-D=M
-@ARG
-M=D
-@R13
-D=M
-@5
-D=D-A
-@3
-D=D+A
-A=D
-D=M
-@THIS
-M=D
-@R13
-D=M
-@5
-D=D-A
-@4
-D=D+A
-A=D
-D=M
-@THAT
-M=D
-@R14
-A=M
-0; JMP
+@LCL // 322
+D=M // 323
+@R13 // 324
+M=D // 325
+@R13 // 326
+D=M // 327
+@5 // 328
+D=D-A // 329
+A=D // 330
+D=M // 331
+@R14 // 332
+M=D // 333
+@SP // 334
+M=M-1 // 335
+A=M // 336
+D=M // 337
+@ARG // 338
+A=M // 339
+M=D // 340
+@ARG // 341
+D=M // 342
+@SP // 343
+M=D+1 // 344
+@R13 // 345
+D=M // 346
+@1 // 347
+D=D-A // 348
+A=D // 349
+D=M // 350
+@THAT // 351
+M=D // 352
+@R13 // 353
+D=M // 354
+@2 // 355
+D=D-A // 356
+A=D // 357
+D=M // 358
+@THIS // 359
+M=D // 360
+@R13 // 361
+D=M // 362
+@3 // 363
+D=D-A // 364
+A=D // 365
+D=M // 366
+@ARG // 367
+M=D // 368
+@R13 // 369
+D=M // 370
+@4 // 371
+D=D-A // 372
+A=D // 373
+D=M // 374
+@LCL // 375
+M=D // 376
+@R14 // 377
+A=M // 378
+0;JMP // 379
+//////
+// Sys
 // function Sys.init 0
 (Sys.init)
-D=0
-@SP
-A=M
-M=D
-@SP
-M=M+1
 // push constant 4
-@4
-D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
+@4 // 380
+D=A // 381
+@SP // 382
+A=M // 383
+M=D // 384
+@SP // 385
+M=M+1 // 386
 // call Main.fibonacci 1
-@Main.fibonacciRES2
-D=A
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@LCL
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@ARG
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@THIS
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@THAT
-D=M
-@SP
-A=M
-M=D
-@SP
-M=M+1
-@SP
-D=M
-@LCL
-M=D
-@6
-D=D-A
-@ARG
-M=D
-@Main.fibonacci
-0; JMP
-(Main.fibonacciRES2)
+@Main.fibonacciRES3 // 387
+D=A // 388
+@SP // 389
+A=M // 390
+M=D // 391
+@SP // 392
+M=M+1 // 393
+@LCL // 394
+D=M // 395
+@SP // 396
+A=M // 397
+M=D // 398
+@SP // 399
+M=M+1 // 400
+@ARG // 401
+D=M // 402
+@SP // 403
+A=M // 404
+M=D // 405
+@SP // 406
+M=M+1 // 407
+@THIS // 408
+D=M // 409
+@SP // 410
+A=M // 411
+M=D // 412
+@SP // 413
+M=M+1 // 414
+@THAT // 415
+D=M // 416
+@SP // 417
+A=M // 418
+M=D // 419
+@SP // 420
+M=M+1 // 421
+@SP // 422
+D=M // 423
+@LCL // 424
+M=D // 425
+@SP // 426
+D=M // 427
+@6 // 428
+D=D-A // 429
+@ARG // 430
+M=D // 431
+@Main.fibonacci // 432
+0;JMP // 433
+(Main.fibonacciRES3)
 // label WHILE
-(WHILE)
+(Sys$WHILE)
 // goto WHILE
-@WHILE
-D; JMP
+@Sys$WHILE // 434
+D;JMP // 435

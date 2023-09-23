@@ -1,11 +1,5 @@
 // function Sys.init 0
 (Sys.init)
-D=0
-@SP
-A=M
-M=D
-@SP
-M=M+1
 // push constant 4000
 @4000
 D=A
@@ -114,6 +108,30 @@ M=D
 D;JMP
 // function Sys.main 5
 (Sys.main)
+D=0
+@SP
+A=M
+M=D
+@SP
+M=M+1
+D=0
+@SP
+A=M
+M=D
+@SP
+M=M+1
+D=0
+@SP
+A=M
+M=D
+@SP
+M=M+1
+D=0
+@SP
+A=M
+M=D
+@SP
+M=M+1
 D=0
 @SP
 A=M
@@ -458,12 +476,6 @@ A=M
 0;JMP
 // function Sys.add12 0
 (Sys.add12)
-D=0
-@SP
-A=M
-M=D
-@SP
-M=M+1
 // push constant 4002
 @4002
 D=A

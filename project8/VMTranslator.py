@@ -67,10 +67,20 @@ class CodeWriter(object):
         self.asm = open(asm_file, 'w')
         self.bool_count = 0
         self.func_count = 0
+        self.line_count = 0
         self.addresses = self.address_dict()
+
+    def write_init(self):
+        self.write('@256')
+        self.write('D=A')
+        self.write('@SP')
+        self.write('M=D')
+        self.write_function('call', 'Sys.init', '0')
 
     def set_file_name(self, vm_file):
         self.curr_file = vm_file.replace('.vm', '').split('/')[-1]
+        self.write('//////', code=False)
+        self.write('// {}'.format(self.curr_file), code=False)
 
     def write_push_pop(self, operation, segment, num):
         self.resolve_address(segment, num)
@@ -130,10 +140,10 @@ class CodeWriter(object):
             self.write('@ENDBOOL{}'.format(self.bool_count))
             self.write('0;JMP')
 
-            self.write('(BOOL{})'.format(self.bool_count))
+            self.write('(BOOL{})'.format(self.bool_count), code=False)
             self.call_SP()
             self.write('M=-1')
-            self.write('(ENDBOOL{})'.format(self.bool_count))
+            self.write('(ENDBOOL{})'.format(self.bool_count), code=False)
             self.bool_count += 1
         elif operation in ['add', 'or', 'sub', 'and', 'neg', 'not']:
             if operation == 'add':
@@ -167,7 +177,7 @@ class CodeWriter(object):
         label LOOP_START
         '''
         if segment == 'label':
-            self.write('({}${})'.format(self.curr_file, name))
+            self.write('({}${})'.format(self.curr_file, name), code=False)
         elif segment == 'if-goto':
             self.pop_from_stack()
             self.write('D=M')
@@ -179,8 +189,8 @@ class CodeWriter(object):
 
     def write_function(self, operation, name, num):
         if operation == 'function':
-            self.write('({})'.format(name))
-            for x in num:
+            self.write('({})'.format(name), code=False)
+            for x in range(int(num)):
                 self.write('D=0')
                 self.push_D_to_stack()
         elif operation == 'call':
@@ -220,7 +230,7 @@ class CodeWriter(object):
             self.write('0;JMP')
 
             # (return_address)
-            self.write('({})'.format(RES))
+            self.write('({})'.format(RES), code=False)
         
     def write_return(self):
         TEMP = 'R13'
@@ -299,8 +309,12 @@ class CodeWriter(object):
         self.write('@SP')
         self.write('A=M')
     
-    def write(self, command):
-        self.asm.write(command + '\n')
+    def write(self, command, code=True):
+        self.asm.write(command)
+        if code:
+            self.asm.write(' // ' + str(self.line_count))
+            self.line_count += 1
+        self.asm.write('\n')
 
     def close(self):
         self.asm.close()
@@ -309,8 +323,10 @@ class Main(object):
     def __init__(self, file_path):
         self.Parse_file(file_path)
         self.cw = CodeWriter(self.asm_file)
+        self.cw.write_init()
         for vm_file in self.vm_files:
             self.translate(vm_file)
+        self.cw.close()
 
     def Parse_file(self, file_path):
         if '.vm' in file_path:
@@ -324,13 +340,13 @@ class Main(object):
             dirpaths, dirnames, filenames = next(os.walk(file_path), [[], [], []])
             vm_files = filter(lambda x: '.vm' in x, filenames)
             self.vm_files = [path + '/' + vm_file for vm_file in vm_files]
-        
+
     def translate(self, vm_file):
         parser = Parser(vm_file)
         self.cw.set_file_name(vm_file)
         while parser.has_next_instruction:
             parser.next()
-            self.cw.write('// ' + ' '.join(parser.curr_instruction))
+            self.cw.write('// ' + ' '.join(parser.curr_instruction), code=False)
             if parser.command_type == 'C_PP':
                 self.cw.write_push_pop(parser.curr_instruction[0], parser.curr_instruction[1], parser.curr_instruction[2])
             elif parser.command_type == 'C_ARITHMETIC':
