@@ -51,9 +51,7 @@ class CodeWriter:
 
     def write_push_pop(self, command, type, num):
         address = address_dict(type)
-        if command == 'push':
-             
-        elif command == 'pop':
+        
 
     def address_dict(self, type):
         return {
